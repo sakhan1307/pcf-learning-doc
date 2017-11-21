@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Requirements on Pivotal Cloud Foundry Developer</title>
+    <link>/pivotal-cloud-foundry-developer/requirements/</link>
+    <description>Recent content in Requirements on Pivotal Cloud Foundry Developer</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Copyright Pivotal. All rights reserved.</copyright>
+    <lastBuildDate>Thu, 10 Mar 2016 08:52:24 -0600</lastBuildDate>
+    <atom:link href="/pivotal-cloud-foundry-developer/requirements/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Requirements</title>
+      <link>/pivotal-cloud-foundry-developer/requirements/</link>
+      <pubDate>Thu, 10 Mar 2016 08:52:24 -0600</pubDate>
+      
+      <guid>/pivotal-cloud-foundry-developer/requirements/</guid>
+      <description>
+
+&lt;h1 id=&#34;personal-experience:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Personal Experience&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Understanding of development concepts&lt;/li&gt;
+&lt;li&gt;Experience using a terminal window&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;pivotal-cloud-foundry-environment:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Pivotal Cloud Foundry Environment&lt;/h1&gt;
+
+&lt;p&gt;You will need a Pivotal Cloud Foundry environment to execute the labs.  You may use a Pivotal Cloud Foundry instance or &lt;a href=http://run.pivotal.io target=&#34;_blank&#34;&gt;Pivotal Web Services&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If taking the course via e-learning using Pivotal Web Services is recommended, unless you have access to another Pivotal Cloud Foundry instance (typically already provisioned by your company).  It is not recommended that you provision a personal Pivotal Cloud Foundry environment to complete the labs.  The setup and installation of Pivotal Cloud Foundry is beyond the scope of this course.&lt;/p&gt;
+
+&lt;p&gt;If taking the course via instructor led training your instructor will provide guidance on the environment to use.&lt;/p&gt;
+
+&lt;p&gt;Throughout the labs you will see specific directions for Pivotal Cloud Foundry or Pivotal Web Services.  Make sure follow the directions for the applicable environment.&lt;/p&gt;
+
+&lt;h2 id=&#34;pivotal-cloud-foundry:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Pivotal Cloud Foundry&lt;/h2&gt;
+
+&lt;p&gt;Pivotal Cloud Foundry may be used to complete these labs.  The following dependencies are required:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Elastic Runtime 1.7 +&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If using self-signed certificates, under the &lt;code&gt;Elastic Runtime Tile&lt;/code&gt; → &lt;code&gt;Settings&lt;/code&gt; → &lt;code&gt;Networking&lt;/code&gt; page make sure the following options have been checked: &lt;code&gt;Disable SSL certificate verification for this environment&lt;/code&gt;, &lt;code&gt;Ignore SSL certificate verification on route services&lt;/code&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MySql Tile&lt;/li&gt;
+&lt;li&gt;Metrics Tile&lt;/li&gt;
+&lt;li&gt;Redis Tile&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;pivotal-web-services:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Pivotal Web Services&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=http://run.pivotal.io target=&#34;_blank&#34;&gt;Pivotal Web Services&lt;/a&gt; may be used to complete these labs.  Simply sign up for an account.&lt;/p&gt;
+
+&lt;h2 id=&#34;a-note-about-the-service-broker-lab:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;A Note About the Service Broker Lab&lt;/h2&gt;
+
+&lt;p&gt;The &lt;a href=&#34;/pivotal-cloud-foundry-developer/pivotal-cloud-foundry-developer/service-broker&#34;&gt;Service Broker lab&lt;/a&gt; requires access to a MongoDB instance.  Please review that &lt;a href=&#34;/pivotal-cloud-foundry-developer/pivotal-cloud-foundry-developer/service-broker&#34;&gt;lab&lt;/a&gt; for alternatives on how to meet that requirement.  Options include using the &lt;a href=&#34;/pivotal-cloud-foundry-developer/pivotal-cloud-foundry-developer/service-broker/aws-mongo-ami&#34;&gt;AWS MongoDB AMI&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;local-machine:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Local Machine&lt;/h1&gt;
+
+&lt;p&gt;You will need the ability to install software on your local machine.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;4GB Memory&lt;/li&gt;
+&lt;li&gt;Installation of &lt;code&gt;cf&lt;/code&gt; (this will be done in the first lab)&lt;/li&gt;
+&lt;li&gt;Network access to the Pivotal Cloud Foundry environment and internet&lt;/li&gt;
+&lt;li&gt;&lt;a href=http://jmeter.apache.org/ target=_&#34;blank&#34;&gt; Apache JMeter &lt;/a&gt;  also requires &lt;a href=http://www.oracle.com/technetwork/java/javase/downloads/index.html target=&#34;_blank&#34;&gt;Java&lt;/a&gt; - Used in the &lt;a href=&#34;/pivotal-cloud-foundry-developer/pivotal-cloud-foundry-developer/application-auto-scaler&#34;&gt;Auto Scaler&lt;/a&gt;, &lt;a href=&#34;/pivotal-cloud-foundry-developer/pivotal-cloud-foundry-developer/application-performance-monitor&#34;&gt;APM&lt;/a&gt; and &lt;a href=&#34;/pivotal-cloud-foundry-developer/pivotal-cloud-foundry-developer/metrics&#34;&gt;Metrics&lt;/a&gt; labs&lt;/li&gt;
+&lt;li&gt;&lt;a href=https://jenkins.io/ target=&#34;_blank&#34;&gt;Jenkins&lt;/a&gt; also requires a &lt;a href=http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html  target=&#34;_blank&#34;&gt;JDK 8&lt;/a&gt; and &lt;a href=https://git-scm.com/ target=&#34;_blank&#34;&gt;git&lt;/a&gt; (provisioning a &lt;a href=&#34;/pivotal-cloud-foundry-developer/pivotal-cloud-foundry-developer/continuous-delivery/aws-jenkins-ami&#34;&gt;Jenkins on AWS&lt;/a&gt; is alternative to local install) - Used in Continuous Delivery Lab&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;optional:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Optional&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa?hl=en target=&#34;_blank&#34;&gt;JSON Formatter for Chrome&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Windows users may desire a better terminal experience than the &lt;em&gt;cmd.exe&lt;/em&gt;.  Check out &lt;a href=https://conemu.github.io/ target=&#34;_blank&#34;&gt;ConEmu&lt;/a&gt;.  It provides multiple tabs and search which is helpful during these labs.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;windows-vm:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Windows VM&lt;/h1&gt;
+
+&lt;p&gt;An alternative to installing and configuring the software on your local machine is to use the Windows VM.&lt;/p&gt;
+
+&lt;p&gt;If using the Windows VM see these &lt;a href=&#34;/pivotal-cloud-foundry-developer/pivotal-cloud-foundry-developer/windows-vm/index.html&#34;&gt;requirements&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

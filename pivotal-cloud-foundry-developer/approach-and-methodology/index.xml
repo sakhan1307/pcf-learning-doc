@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Approach-and-methodologies on Pivotal Cloud Foundry Developer</title>
+    <link>/pivotal-cloud-foundry-developer/approach-and-methodology/</link>
+    <description>Recent content in Approach-and-methodologies on Pivotal Cloud Foundry Developer</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Copyright Pivotal. All rights reserved.</copyright>
+    <atom:link href="/pivotal-cloud-foundry-developer/approach-and-methodology/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Approach and Methodology</title>
+      <link>/pivotal-cloud-foundry-developer/approach-and-methodology/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/pivotal-cloud-foundry-developer/approach-and-methodology/</guid>
+      <description>
+
+&lt;h3 id=&#34;approach:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Approach&lt;/h3&gt;
+
+&lt;p&gt;After completing this course, you will be prepared to deliver applications with Pivotal Cloud Foundry.&lt;/p&gt;
+
+&lt;p&gt;This course is designed to challenge you. In this course, you will learn by doing. For this reason, the course is approximately 1/3rd slides and 2/3rd labs.&lt;/p&gt;
+
+&lt;p&gt;The course makes extensive use of the official product documentation to supplement your learning. Pivotal Cloud Foundry is a fast moving project and it is imperative that you learn where to go for help. The expectation is that you read documentation to complete the labs and answer inline questions (in the labs).&lt;/p&gt;
+
+&lt;p&gt;Explore! Dive into the cf CLI and all facets of Pivotal Cloud Foundry.&lt;/p&gt;
+
+&lt;h3 id=&#34;methodology:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Methodology&lt;/h3&gt;
+
+&lt;p&gt;The flow of each module will move from a presentation (if applicable) to lab then a recap.&lt;/p&gt;
+
+&lt;p&gt;During the presentations you will learn about high level concepts, then move into a lab where you can see things happen in action.&lt;/p&gt;
+
+&lt;p&gt;The recap will bring it back together.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

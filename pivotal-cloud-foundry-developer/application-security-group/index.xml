@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Application-security-groups on Pivotal Cloud Foundry Developer</title>
+    <link>/pivotal-cloud-foundry-developer/application-security-group/</link>
+    <description>Recent content in Application-security-groups on Pivotal Cloud Foundry Developer</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Copyright Pivotal. All rights reserved.</copyright>
+    <lastBuildDate>Mon, 07 Mar 2016 15:49:50 -0600</lastBuildDate>
+    <atom:link href="/pivotal-cloud-foundry-developer/application-security-group/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Application Security Groups</title>
+      <link>/pivotal-cloud-foundry-developer/application-security-group/</link>
+      <pubDate>Mon, 07 Mar 2016 15:49:50 -0600</pubDate>
+      
+      <guid>/pivotal-cloud-foundry-developer/application-security-group/</guid>
+      <description>
+
+&lt;p&gt;Estimated Time: 10 minutes&lt;/p&gt;
+
+&lt;h1 id=&#34;requirements:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Requirements&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;/pivotal-cloud-foundry-developer/pivotal-cloud-foundry-developer/requirements&#34;&gt;Lab Requirements&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;what-you-will-learn:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;What you will learn&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;How to view application security groups&lt;/li&gt;
+&lt;li&gt;How to view the details of an application security group&lt;/li&gt;
+&lt;li&gt;What commands that administrators can use to manage security groups&lt;/li&gt;
+&lt;li&gt;How security group rules can impact your application&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;exercises:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Exercises&lt;/h1&gt;
+
+&lt;h2 id=&#34;review-application-security-groups:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Review Application Security Groups&lt;/h2&gt;
+
+&lt;p&gt;1) Review the &lt;a href=http://docs.pivotal.io/pivotalcf/adminguide/app-sec-groups.html target=&#34;_blank&#34;&gt;documentation&lt;/a&gt; on &lt;a href=https://docs.pivotal.io/pivotalcf/concepts/security.html#network-traffic target=&#34;_blank&#34;&gt;application security groups&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;2) List the security groups in your environment.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cf security-groups
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;3) Pivotal Cloud Foundry ships with multiple security groups.  Pick two security groups from the list and note the differences in the details of those security groups.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cf security-group public_networks
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;questions:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Questions&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Do application security groups use a whitelist or blacklist approach to firewall rules?&lt;/li&gt;
+&lt;li&gt;What are the differences in the two application security groups that you looked at?&lt;/li&gt;
+&lt;li&gt;What are some reasons why security groups could be used?&lt;/li&gt;
+&lt;li&gt;How could security groups affect the staging and running of your application?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;administration-of-application-security-groups:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Administration of application security groups&lt;/h1&gt;
+
+&lt;p&gt;The cf CLI exposes a dozen or so commands for &lt;code&gt;admin&lt;/code&gt; users to use to create and manage application security groups. The rest of this lab provides an overview.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;em&gt;NOTE:&lt;/em&gt;&lt;/strong&gt; Unless you&amp;rsquo;re an administrator of the PCF instance you&amp;rsquo;re working with, you won&amp;rsquo;t be able to experiment with these commands.  Nevertheless it&amp;rsquo;s important that you be aware of them.&lt;/p&gt;
+
+&lt;h2 id=&#34;managing-asgs:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Managing ASGs&lt;/h2&gt;
+
+&lt;p&gt;When logged in as &lt;code&gt;admin&lt;/code&gt;, the command &lt;code&gt;cf security-groups&lt;/code&gt; lists all security groups:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cf security-groups
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The following commands support managing this list:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cf create-security-group
+$ cf update-security-group
+$ cf delete-security-group
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;em&gt;create&lt;/em&gt; and &lt;em&gt;update&lt;/em&gt; commands require that you supply the security group definition as a JSON file that encodes a list of egress rules.&lt;/p&gt;
+
+&lt;p&gt;The creation of a security group is only a first step.  Additional commands exist to control which security groups are applied in different situations.&lt;/p&gt;
+
+&lt;h2 id=&#34;binding-asgs-to-running-applications:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Binding ASGs to Running Applications&lt;/h2&gt;
+
+&lt;p&gt;The command &lt;code&gt;cf running-security-groups&lt;/code&gt; lists all security groups that apply to all running applications:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cf running-security-groups
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Use these commands to apply (or unapply) a security group to all running applications:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cf bind-running-security-group all_open
+$ cf unbind-running-security-group all_open
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;binding-asgs-to-application-staging:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Binding ASGs to Application Staging&lt;/h2&gt;
+
+&lt;p&gt;Security groups can also control the behavior of scripts that stage an application.  To list all security groups that apply to the staging of applications, use the command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cf staging-security-groups
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Use these commands to apply (or unapply) a security group to the application staging phase:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cf bind-staging-security-group all_open
+$ cf unbind-staging-security-group all_open
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;org-and-space-specific-bindings:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Org and Space specific bindings&lt;/h2&gt;
+
+&lt;p&gt;The &lt;em&gt;running-security-groups&lt;/em&gt; binding is coarse-grained; it applies to all running applications in a PCF installation.  For finer-grained control of security groups to specific running applications, these commands can scope the binding to a specific org or space:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cf bind-security-group all_open my-org my-space
+$ cf unbind-security-group all_open my-org my-space
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;questions-1:d680e8a854a7cbad6d490c445cba2eba&#34;&gt;Questions&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;What are the differences between the different types (running and staging) of security groups?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Imagine a situation in which an application is bound to a backing database service and deployed to PCF.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;In the absence of ASG bindings, would the application be able to communicate with the backing service?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let&amp;rsquo;s assume that the backing database is a mysql instance, which by default accepts connections on port 3306.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;As an cloudfoundry administrator, what would you have to do in order to allow &lt;em&gt;any&lt;/em&gt; running application to communicate with this type of backing service?&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;What would your security group rules JSON file look like?  Should the rules allow all ports over all ip addresses?  Can the rules be constrained to allow only port 3306 over a specific range of ip addresses?  Try to construct a security group rules file (JSON) that you&amp;rsquo;d use to create and then bind to running applications.  What command would you use to define the security group?  What would you name it?  What command would you use to bind it?&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Instructor Notes</title>
+      <link>/pivotal-cloud-foundry-developer/application-security-group/notes/</link>
+      <pubDate>Mon, 07 Mar 2016 15:49:50 -0600</pubDate>
+      
+      <guid>/pivotal-cloud-foundry-developer/application-security-group/notes/</guid>
+      <description>
+
+&lt;h1 id=&#34;questions:db235fc914867ffea6b540c8732499d5&#34;&gt;Questions&lt;/h1&gt;
+
+&lt;p&gt;After completing the lab recap as a class the following questions:&lt;/p&gt;
+
+&lt;h2 id=&#34;general-discussion-questions:db235fc914867ffea6b540c8732499d5&#34;&gt;General Discussion Questions&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Q:&lt;/strong&gt; &lt;em&gt;As a developer, what &lt;code&gt;cf&lt;/code&gt; commands can be used to investigate/understand security groups?&lt;/em&gt;&lt;br&gt;
+&lt;strong&gt;A:&lt;/strong&gt; &lt;code&gt;cf security-groups&lt;/code&gt;, &lt;code&gt;cf security-group&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;questions-from-the-lab:db235fc914867ffea6b540c8732499d5&#34;&gt;Questions From the Lab&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Q:&lt;/strong&gt; &lt;em&gt;Do application security groups use a whitelist or blacklist approach to firewall rules?&lt;/em&gt;&lt;br&gt;
+&lt;strong&gt;A:&lt;/strong&gt; whitelist&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Q:&lt;/strong&gt; &lt;em&gt;What are the differences in the two application security groups that you looked at?&lt;/em&gt;&lt;br&gt;
+&lt;strong&gt;A:&lt;/strong&gt; The port and protocols may be different different. An example from PWS:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Name    public_networks
+Rules
+	[
+		{
+			&amp;quot;destination&amp;quot;: &amp;quot;0.0.0.0-9.255.255.255&amp;quot;,
+			&amp;quot;protocol&amp;quot;: &amp;quot;all&amp;quot;
+		},
+		{
+			&amp;quot;destination&amp;quot;: &amp;quot;11.0.0.0-169.253.255.255&amp;quot;,
+			&amp;quot;protocol&amp;quot;: &amp;quot;all&amp;quot;
+		},
+		{
+			&amp;quot;destination&amp;quot;: &amp;quot;169.255.0.0-172.15.255.255&amp;quot;,
+			&amp;quot;protocol&amp;quot;: &amp;quot;all&amp;quot;
+		},
+		{
+			&amp;quot;destination&amp;quot;: &amp;quot;172.32.0.0-192.167.255.255&amp;quot;,
+			&amp;quot;protocol&amp;quot;: &amp;quot;all&amp;quot;
+		},
+		{
+			&amp;quot;destination&amp;quot;: &amp;quot;192.169.0.0-255.255.255.255&amp;quot;,
+			&amp;quot;protocol&amp;quot;: &amp;quot;all&amp;quot;
+		}
+	]
+
+No spaces assigned
+
+ |2.3.0| longview in ~
+○ → cf security-group dns
+Getting info for security group dns as mgehard@pivotal.io
+OK
+        
+Name    dns
+Rules
+	[
+		{
+			&amp;quot;destination&amp;quot;: &amp;quot;0.0.0.0/0&amp;quot;,
+			&amp;quot;ports&amp;quot;: &amp;quot;53&amp;quot;,
+			&amp;quot;protocol&amp;quot;: &amp;quot;tcp&amp;quot;
+		},
+		{
+			&amp;quot;destination&amp;quot;: &amp;quot;0.0.0.0/0&amp;quot;,
+			&amp;quot;ports&amp;quot;: &amp;quot;53&amp;quot;,
+			&amp;quot;protocol&amp;quot;: &amp;quot;udp&amp;quot;
+		}
+	]
+
+No spaces assigned
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Q:&lt;/strong&gt; &lt;em&gt;What are some reasons why security groups could be used?&lt;/em&gt;&lt;br&gt;
+&lt;strong&gt;A:&lt;/strong&gt; Open discussion&amp;hellip;Protection against typically trusted sources (employees) doing bad things, limiting risk by only exposing what you should have access to, forcing apps to use a given API rather than accessing the data directly.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Q:&lt;/strong&gt; &lt;em&gt;How could security groups affect the staging and running of you application?&lt;/em&gt;&lt;br&gt;
+&lt;strong&gt;A:&lt;/strong&gt; If the proper ports/protocols are not open, an application may have issues accessing external resources.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Q:&lt;/strong&gt; &lt;em&gt;What are the differences between the different types (running and staging) of security groups?&lt;/em&gt;&lt;br&gt;
+&lt;strong&gt;A:&lt;/strong&gt; Staging = only affects staging process, Running = only affects running applications&lt;/p&gt;
+
+&lt;h1 id=&#34;troubleshooting:db235fc914867ffea6b540c8732499d5&#34;&gt;Troubleshooting&lt;/h1&gt;
+
+&lt;p&gt;Troubleshooting guidance for the lab that instructors need to know.&lt;/p&gt;
+
+&lt;h1 id=&#34;feedback:db235fc914867ffea6b540c8732499d5&#34;&gt;Feedback&lt;/h1&gt;
+
+&lt;p&gt;Please keep track of all types of feedback, so that we can make this module great.  That includes questions that students may ask that we should be answering up front, lab corrections/improvements, etc.&lt;/p&gt;
+
+&lt;p&gt;Submit feedback to: &lt;a href=&#34;mailto:pcf-developer-instructor-feedback@pivotal.io&#34;&gt;pcf-developer-instructor-feedback@pivotal.io&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
